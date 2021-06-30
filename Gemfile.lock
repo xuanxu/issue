@@ -2,11 +2,15 @@ PATH
   remote: .
   specs:
     issue (0.0.1)
+      openssl
+      rack
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
+    openssl (2.2.0)
+    rack (2.2.3)
     rake (13.0.3)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
