@@ -45,6 +45,7 @@ module Issue
         issue_title: issue_title,
         issue_body: issue_body,
         issue_author: issue_author,
+        issue_labels: issue_labels,
         repo: repo,
         sender: sender,
         event_action: "#{event}.#{action}",

@@ -112,5 +112,29 @@ describe Issue::Webhook do
         expect(error.message).to eq("Event origin discarded")
       end
     end
+
+    it "should parse the payload" do
+      payload_body = { action: "created",
+                       sender: { login: "user33" },
+                       repository: { full_name: "myorg/myreponame" },
+                       issue: { number: "42", title: "New package", body: "Body!" }}
+
+      allow(request_body).to receive(:read).and_return(payload_body.to_json)
+      webhook = Issue::Webhook.new({secret_token: "123ABC"})
+      allow(webhook).to receive(:verify_signature).and_return(true)
+
+      payload, error = webhook.parse_request(request)
+
+      expect(error).to be_nil
+      expect(webhook).to_not be_errored
+      expect(payload.action).to eq("created")
+      expect(payload.event).to eq("issues")
+      expect(payload.sender).to eq("user33")
+      expect(payload.repo).to eq("myorg/myreponame")
+      expect(payload.issue_id).to eq("42")
+      expect(payload.issue_title).to eq("New package")
+      expect(payload.issue_body).to eq("Body!")
+      expect(payload.issue_labels).to be_nil
+    end
   end
 end
