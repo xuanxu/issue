@@ -29,7 +29,8 @@ module Issue
     #   comment_url
     #
     def initialize(json_data, event)
-      action = json_data["action"]
+      action = json_data.dig("action")
+      sender = json_data.dig("sender", "login")
       issue_id = json_data.dig("issue", "number")
       issue_title = json_data.dig("issue", "title")
       issue_body = json_data.dig("issue", "body")
@@ -57,7 +58,7 @@ module Issue
       end
 
       @context.each_pair do |method_name, value|
-        define_method(method_name) {value}
+        define_singleton_method(method_name) {value}
       end
     end
 
