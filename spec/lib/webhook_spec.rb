@@ -136,5 +136,38 @@ describe Issue::Webhook do
       expect(payload.issue_body).to eq("Body!")
       expect(payload.issue_labels).to be_nil
     end
+
+    it "should get payload if origin is correct" do
+      payload_body = { repository: { full_name: "myorg/myreponame" } }
+      allow(request_body).to receive(:read).and_return(payload_body.to_json)
+      webhook = Issue::Webhook.new({secret_token: "123ABC", origin: "myorg/myreponame"})
+      allow(webhook).to receive(:verify_signature).and_return(true)
+
+      payload, error = webhook.parse_request(request)
+      expect(error).to be_nil
+      expect(payload.repo).to eq("myorg/myreponame")
+    end
+
+    it "should get payload if sender is not discarded" do
+      payload_body = { sender: { login: "user32" } }
+      allow(request_body).to receive(:read).and_return(payload_body.to_json)
+      webhook = Issue::Webhook.new({secret_token: "123ABC", discard_sender: "user33"})
+      allow(webhook).to receive(:verify_signature).and_return(true)
+
+      payload, error = webhook.parse_request(request)
+      expect(error).to be_nil
+      expect(payload.sender).to eq("user32")
+    end
+
+    it "should get payload if event is in the list of accepted events" do
+      payload_body = { repository: { full_name: "myorg/myreponame" } }
+      allow(request_body).to receive(:read).and_return(payload_body.to_json)
+      webhook = Issue::Webhook.new({secret_token: "123ABC", accept_events: ["issues", "comments"]})
+      allow(webhook).to receive(:verify_signature).and_return(true)
+
+      payload, error = webhook.parse_request(request)
+      expect(error).to be_nil
+      expect(payload.event).to eq("issues")
+    end
   end
 end
