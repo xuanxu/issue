@@ -1,4 +1,5 @@
 require "ostruct"
+require "json"
 
 module Issue
   class Payload
