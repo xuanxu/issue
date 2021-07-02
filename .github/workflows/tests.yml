@@ -1,4 +1,4 @@
-name: Tests
+name: tests
 
 on: [push, pull_request]
 jobs:
@@ -21,7 +21,7 @@ jobs:
       with:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true
-    - name: Run tests
+    - name: Run specs
       run: |
         bundle exec ruby -v
         bundle exec rake
