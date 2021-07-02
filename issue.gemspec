@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
     "homepage_uri"      => s.homepage,
     "source_code_uri"   => s.homepage
   }
-  s.files = %w(MIT-LICENSE.txt README.md) + Dir.glob("{spec,lib/**/*}") & `git ls-files -z`.split("\0")
+  s.files = %w(LICENSE README.md CHANGELOG.md) + Dir.glob("{spec,lib/**/*}") & `git ls-files -z`.split("\0")
   s.require_paths = ["lib"]
   s.rdoc_options = ['--main', 'README.md', '--charset=UTF-8']
 
