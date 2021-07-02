@@ -14,8 +14,6 @@ jobs:
           failure-allowed: true
         - ruby-version: 'truffleruby'
           failure-allowed: true
-        - ruby-version: 'jruby'
-          failure-allowed: true
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
