@@ -32,12 +32,21 @@ module Issue
     def initialize(json_data, event)
       action = json_data.dig("action")
       sender = json_data.dig("sender", "login")
-      issue_id = json_data.dig("issue", "number")
-      issue_title = json_data.dig("issue", "title")
-      issue_body = json_data.dig("issue", "body")
-      issue_labels = json_data.dig("issue", "labels")
-      issue_author = json_data.dig("issue", "user", "login")
       repo = json_data.dig("repository", "full_name")
+
+      if event == "pull_request"
+        issue_id = json_data.dig("pull_request", "number")
+        issue_title = json_data.dig("pull_request", "title")
+        issue_body = json_data.dig("pull_request", "body")
+        issue_labels = json_data.dig("pull_request", "labels")
+        issue_author = json_data.dig("pull_request", "user", "login")
+      else
+        issue_id = json_data.dig("issue", "number")
+        issue_title = json_data.dig("issue", "title")
+        issue_body = json_data.dig("issue", "body")
+        issue_labels = json_data.dig("issue", "labels")
+        issue_author = json_data.dig("issue", "user", "login")
+      end
 
       @context = OpenStruct.new(
         action: action,

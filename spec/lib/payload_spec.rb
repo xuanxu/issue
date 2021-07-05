@@ -1,9 +1,9 @@
 describe Issue::Payload do
   before do
     @data = JSON.parse({ action: "test-action",
-                        sender: { login: "user33" },
-                        repository: { full_name: "myorg/myrepo_name" },
-                        issue: { number: "42",
+                         sender: { login: "user33" },
+                         repository: { full_name: "myorg/myrepo_name" },
+                         issue: { number: "42",
                                  title: "New package",
                                  body: "Body!",
                                  user: { login: "author" },
@@ -61,6 +61,29 @@ describe Issue::Payload do
     expect(payload.comment_body).to be_nil
     expect(payload.comment_created_at).to be_nil
     expect(payload.comment_url).to be_nil
+  end
+
+  it "should get issue data from pull_request" do
+    pr_data = JSON.parse({ action: "opened",
+                           sender: { login: "user32" },
+                           repository: { full_name: "org/newrepo" },
+                           pull_request: { number: "11",
+                                           title: "New code",
+                                           body: "Body of the PR!",
+                                           user: { login: "contributor" }}}.to_json)
+
+    payload = Issue::Payload.new(pr_data, "pull_request")
+
+    expect(payload.action).to eq("opened")
+    expect(payload.event).to eq("pull_request")
+    expect(payload.issue_id).to eq("11")
+    expect(payload.issue_title).to eq("New code")
+    expect(payload.issue_body).to eq("Body of the PR!")
+    expect(payload.issue_author).to eq("contributor")
+    expect(payload.issue_labels).to be_nil
+    expect(payload.repo).to eq("org/newrepo")
+    expect(payload.sender).to eq("user32")
+    expect(payload.event_action).to eq("pull_request.opened")
   end
 
   it "original data should be available" do
