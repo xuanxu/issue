@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.0 (2021-07-06)
+
+- Added support for `pull_request` type events
+
 ## 0.1.0 (2021-07-01)
 
 - Added initial functionality and classes

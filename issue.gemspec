@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.homepage = 'http://github.com/xuanxu/issue'
   s.license = "MIT"
   s.summary = "Manage webhook payload for issue events"
-  s.description = "Receive, parse and manage GitHub webhook events for issues and issue's comments"
+  s.description = "Receive, parse and manage GitHub webhook events for issues, PRs and issue's comments"
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/xuanxu/issue/issues",
     "changelog_uri"     => "https://github.com/xuanxu/issue/blob/master/CHANGELOG.md",
