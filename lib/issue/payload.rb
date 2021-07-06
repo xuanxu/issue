@@ -6,8 +6,9 @@ module Issue
     attr_accessor :context
 
     # Initialize Issue::Payload object with:
-    # json_data: the json sent from a GitHub webhook
-    # event: the value of the HTTP_X_GITHUB_EVENT header
+    #
+    #   json_data: the parsed json sent from a GitHub webhook
+    #   event: the value of the HTTP_X_GITHUB_EVENT header
     #
     # Initializing a new Issue::Payload instance makes all this info
     # from the json webhook available via accessor methods:
@@ -23,7 +24,7 @@ module Issue
     #   event_action
     #   raw_payload
     #
-    # And if the case the event is 'issue_comment' also:
+    # And when the event is 'issue_comment' also:
     #
     #   comment_body
     #   comment_created_at

@@ -15,10 +15,10 @@ module Issue
 
     # Initialize the Issue::Webhook object
     # This method should receive a Hash with the following settings:
-    #   * secret_token: the GitHub secret token needed to verify the request signature
-    #   * accept_events: an Array of valid values for the HTTP_X_GITHUB_EVENT header. If empty any event will be precessed.
-    #   * origin: the respository where the webhook should be sent to be accepted. If empty any request will be precessed.
-    #   * discard_sender: an optional GitHub user handle to discard all events triggered by it.
+    #   secret_token: the GitHub secret token needed to verify the request signature.
+    #   accept_events: an Array of valid values for the HTTP_X_GITHUB_EVENT header. If empty any event will be processed.
+    #   origin: the respository where the webhook should be sent to be accepted. If empty any request will be processed.
+    #   discard_sender: an optional GitHub user handle to discard all events triggered by it.
     def initialize(settings={})
       @secret_token = settings[:secret_token]
       @accept_origin = settings[:origin]
