@@ -2,7 +2,7 @@
 [![Gem Version](https://badge.fury.io/rb/issue.svg)](https://badge.fury.io/rb/issue)
 [![Tests](https://github.com/xuanxu/issue/actions/workflows/tests.yml/badge.svg)](https://github.com/xuanxu/issue/actions/workflows/tests.yml)
 
-Issue is a small library dedicated to parse requests coming from GitHub webhooks representing `issues`, `issue_comment` and `pull_request` events.
+Issue is a small library dedicated to parse requests coming from GitHub webhooks triggered by `issues`, `issue_comment` and `pull_request` events.
 
 ## Getting started
 
