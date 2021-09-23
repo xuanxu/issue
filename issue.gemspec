@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Receive, parse and manage GitHub webhook events for issues, PRs and issue's comments"
   s.metadata = {
     "bug_tracker_uri"   => "https://github.com/xuanxu/issue/issues",
-    "changelog_uri"     => "https://github.com/xuanxu/issue/blob/master/CHANGELOG.md",
+    "changelog_uri"     => "https://github.com/xuanxu/issue/blob/main/CHANGELOG.md",
     "documentation_uri" => "https://www.rubydoc.info/gems/issue",
     "homepage_uri"      => s.homepage,
     "source_code_uri"   => s.homepage

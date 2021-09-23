@@ -198,13 +198,3 @@ describe Issue::Payload do
     expect(payload).to_not be_labeled
   end
 end
-
-
-
-
-
-
-
-
-
-
