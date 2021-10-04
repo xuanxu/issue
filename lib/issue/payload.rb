@@ -64,6 +64,7 @@ module Issue
       )
 
       if event == "issue_comment"
+        @context[:comment_id] = json_data.dig("comment", "id")
         @context[:comment_body] = json_data.dig("comment", "body")
         @context[:comment_created_at] = json_data.dig("comment", "created_at")
         @context[:comment_url] = json_data.dig("comment", "html_url")

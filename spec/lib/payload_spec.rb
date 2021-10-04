@@ -3,7 +3,7 @@ describe Issue::Payload do
     @data = JSON.parse({ action: "test-action",
                          sender: { login: "user33" },
                          repository: { full_name: "myorg/myrepo_name" },
-                         issue: { number: "42",
+                         issue: { number: 42,
                                  title: "New package",
                                  body: "Body!",
                                  user: { login: "author" },
@@ -18,7 +18,7 @@ describe Issue::Payload do
 
     expect(context.action).to eq("test-action")
     expect(context.event).to eq("specs")
-    expect(context.issue_id).to eq("42")
+    expect(context.issue_id).to eq(42)
     expect(context.issue_title).to eq("New package")
     expect(context.issue_body).to eq("Body!")
     expect(context.issue_author).to eq("author")
@@ -29,7 +29,8 @@ describe Issue::Payload do
   end
 
   it "context should include comment information on issue_comment event" do
-    comment_data = { comment: { body: "commenting",
+    comment_data = { comment: { id: 33,
+                                body: "commenting",
                                 created_at: "2/22/2222",
                                 html_url: "http://comment.link"} }
     parsed_data = @data.merge(JSON.parse(comment_data.to_json))
@@ -40,6 +41,7 @@ describe Issue::Payload do
 
     expect(context.action).to eq("test-action")
     expect(context.event).to eq("issue_comment")
+    expect(context.comment_id).to eq(33)
     expect(context.comment_body).to eq("commenting")
     expect(context.comment_created_at).to eq("2/22/2222")
     expect(context.comment_url).to eq("http://comment.link")
@@ -50,7 +52,7 @@ describe Issue::Payload do
 
     expect(payload.action).to eq("test-action")
     expect(payload.event).to eq("issue_comment")
-    expect(payload.issue_id).to eq("42")
+    expect(payload.issue_id).to eq(42)
     expect(payload.issue_title).to eq("New package")
     expect(payload.issue_body).to eq("Body!")
     expect(payload.issue_author).to eq("author")
