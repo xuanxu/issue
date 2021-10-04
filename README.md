@@ -66,6 +66,7 @@ The `Issue::Payload` object includes all the parsed information coming from the 
   repo:               # the full name of the origin repository
   sender:             # the login of the user triggering the webhook action
   event_action:       # a string: "event.action"
+  comment_id:         # id of the comment
   comment_body:       # body of the comment
   comment_created_at: # created_at value of the comment
   comment_url:        # the html url for the comment
