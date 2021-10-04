@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    issue (0.2.0)
+    issue (0.3.0)
       openssl
       rack
 
@@ -35,4 +35,4 @@ DEPENDENCIES
   rspec (~> 3.10)
 
 BUNDLED WITH
-   2.2.16
+   2.2.27

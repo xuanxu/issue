@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0 (2021-10-04)
+
+- Add comment_id to Payload's context
+
 ## 0.2.0 (2021-07-06)
 
 - Added support for `pull_request` type events
