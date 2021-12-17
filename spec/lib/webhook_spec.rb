@@ -11,7 +11,7 @@ describe Issue::Webhook do
 
       expect(webhook.secret_token).to eq("123ABC")
       expect(webhook.accept_origin).to eq("testing/tests")
-      expect(webhook.discard_sender).to eq("mybot")
+      expect(webhook.discard_sender).to eq({"mybot" => []})
       expect(webhook.accept_events).to eq(["issue_comment", "issues"])
     end
 
@@ -110,6 +110,22 @@ describe Issue::Webhook do
         payload, error = webhook.parse_request(request)
 
         expect(error.message).to eq("Event origin discarded")
+      end
+
+      it "should discard by sender and event" do
+        allow(request_body).to receive(:read).and_return({event: "comment", sender: {login: "bot"}}.to_json)
+
+        webhook = Issue::Webhook.new({secret_token: "123ABC", discard_sender: {bot: "issues"}})
+        payload, error = webhook.parse_request(request)
+        expect(error.message).to eq("Event origin discarded")
+
+        webhook = Issue::Webhook.new({secret_token: "123ABC", discard_sender: {bot: ["issues", "comments"]}})
+        payload, error = webhook.parse_request(request)
+        expect(error.message).to eq("Event origin discarded")
+
+        webhook = Issue::Webhook.new({secret_token: "123ABC", discard_sender: {bot: "comments"}})
+        payload, error = webhook.parse_request(request)
+        expect(error).to be_nil
       end
     end
 

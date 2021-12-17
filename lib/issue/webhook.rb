@@ -22,8 +22,8 @@ module Issue
     def initialize(settings={})
       @secret_token = settings[:secret_token]
       @accept_origin = settings[:origin]
-      @discard_sender = settings[:discard_sender]
       @accept_events = [settings[:accept_events]].flatten.compact.uniq.map(&:to_s)
+      @discard_sender = parse_discard_senders(settings[:discard_sender])
     end
 
     # This method will parse the passed request.
@@ -53,6 +53,16 @@ module Issue
 
     private
 
+    def parse_discard_senders(discard_sender_settings)
+      if discard_sender_settings.is_a?(String)
+        return { discard_sender_settings => [] }
+      elsif discard_sender_settings.is_a?(Hash)
+        return discard_sender_settings.transform_keys {|k| k.to_s }.transform_values {|v| [v].flatten}
+      else
+        return {}
+      end
+    end
+
     def verify_signature
       gh_signature = request.get_header "HTTP_X_HUB_SIGNATURE"
       return error!(500, "Can't compute signature") if secret_token.nil? || secret_token.empty?
@@ -78,7 +88,7 @@ module Issue
       return error!(422, "No payload") if json_payload.nil? || json_payload.empty?
       return error!(422, "No event") if event.nil?
       return error!(200, "Event discarded") unless (accept_events.empty? || accept_events.include?(event))
-      return error!(200, "Event origin discarded") if (discard_sender && sender == discard_sender)
+      return error!(200, "Event origin discarded") if (discard_sender[sender] == [] || discard_sender[sender].to_a.include?(event))
       return error!(403, "Event origin not allowed") if (accept_origin && origin != accept_origin)
 
       @payload = Issue::Payload.new(json_payload, event)
