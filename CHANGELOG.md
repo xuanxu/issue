@@ -1,5 +1,10 @@
 # Changelog
 
+
+## 1.0.0 (2021-12-17)
+
+- Webhook can discard requests by multiple sender/events pairs
+
 ## 0.3.0 (2021-10-04)
 
 - Add comment_id to Payload's context

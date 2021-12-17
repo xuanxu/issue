@@ -28,7 +28,7 @@ The `Issue::Webhook` is used to declare and parse a GitHub webhook. At initializ
 
 - **secret_token**: The GitHub secret access token for authorization
 - **origin**: The repository to accept payloads from. If nil any origin will be accepted. If not nil any request from a different repository will be ignored
-- **discard_sender**: The GitHub handle of a user whose events will be ignored. Usually the organization bot. If nil no user will be ignored.
+- **discard_sender**: The GitHub handle of a user whose events will be ignored. Usually the organization bot. If nil no user will be ignored. To ignore only specific events use a Hash where keys are usernames and values are arrays of events to ignore for that username.
 - **accept_events**: An Array of GitHub event types to accept. If nil all events will be accepted.
 
 Once it is initialized a request can be parsed passing it to the **`parse_request`** method. After verifying the request signature and checking for the configurated conditions the `parse_request` method returns a [Payload, Error] pair, where the error is nil if nothing failed, and the payload is nil if an error ocurred.
