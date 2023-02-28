@@ -23,8 +23,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
   s.rdoc_options = ['--main', 'README.md', '--charset=UTF-8']
 
-  s.add_dependency "openssl"
-  s.add_dependency "rack"
+  s.add_dependency "openssl", "~> 3.1.0"
+  s.add_dependency "rack", "~> 3.0.4"
 
   s.add_development_dependency "rake", "~> 13.0.6"
   s.add_development_dependency "rspec", "~> 3.12"
