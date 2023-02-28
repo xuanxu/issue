@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 1.0.1 (2023-28-02)
+
+- Updated dependencies versions (Rack & Openssl)
+
 ## 1.0.0 (2021-12-17)
 
 - Webhook can discard requests by multiple sender/events pairs

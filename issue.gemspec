@@ -26,6 +26,6 @@ Gem::Specification.new do |s|
   s.add_dependency "openssl"
   s.add_dependency "rack"
 
-  s.add_development_dependency "rake", "~> 13.0.3"
-  s.add_development_dependency "rspec", "~> 3.10"
+  s.add_development_dependency "rake", "~> 13.0.6"
+  s.add_development_dependency "rspec", "~> 3.12"
 end
