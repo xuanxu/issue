@@ -2,14 +2,14 @@ PATH
   remote: .
   specs:
     issue (1.0.1)
-      openssl (~> 3.1.0)
-      rack (~> 3.0.4)
+      openssl (~> 3.2.0)
+      rack (~> 3.0.8)
 
 GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.5.0)
-    openssl (3.1.0)
+    openssl (3.2.0)
     rack (3.0.8)
     rake (13.0.6)
     rspec (3.12.0)
@@ -21,7 +21,7 @@ GEM
     rspec-expectations (3.12.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-mocks (3.12.5)
+    rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
     rspec-support (3.12.1)
