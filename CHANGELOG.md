@@ -1,7 +1,11 @@
 # Changelog
 
 
-## 1.0.1 (2023-28-02)
+## 1.0.2 (2024-06-27)
+
+- Updated dependencies & tested in Ruby 3.3.X
+
+## 1.0.1 (2023-02-28)
 
 - Updated dependencies versions (Rack & Openssl)
 

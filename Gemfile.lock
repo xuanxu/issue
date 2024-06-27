@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    issue (1.0.1)
+    issue (1.0.2)
       openssl (~> 3.2)
       rack (~> 3.1)
 
