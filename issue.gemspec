@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "openssl", "~> 3.2"
   s.add_dependency "rack", "~> 3.1"
+  s.add_dependency "ostruct", "~> 0.6"
 
   s.add_development_dependency "rake", "~> 13.2"
   s.add_development_dependency "rspec", "~> 3.13"

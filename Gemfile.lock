@@ -3,6 +3,7 @@ PATH
   specs:
     issue (1.0.2)
       openssl (~> 3.2)
+      ostruct (~> 0.6)
       rack (~> 3.1)
 
 GEM
@@ -10,6 +11,7 @@ GEM
   specs:
     diff-lcs (1.5.1)
     openssl (3.2.0)
+    ostruct (0.6.3)
     rack (3.1.4)
     rake (13.2.1)
     rspec (3.13.0)
