@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.0 (2026-11-08)
+
+- Added Ruby 4 compatibility
 
 ## 1.0.2 (2024-06-27)
 

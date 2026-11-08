@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    issue (1.0.2)
+    issue (1.1.0)
       openssl (~> 3.2)
       ostruct (~> 0.6)
       rack (~> 3.1)
